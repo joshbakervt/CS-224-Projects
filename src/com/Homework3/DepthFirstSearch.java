@@ -12,6 +12,7 @@ public class DepthFirstSearch {
         this.adjacencyList = adjacencyList;
         this.numVertices = numVertices;
     }
+
     public void runDFS() {
         System.out.println("\nRunning DFS from start node " + this.node + "...");
         boolean discovered[] = new boolean[this.numVertices];

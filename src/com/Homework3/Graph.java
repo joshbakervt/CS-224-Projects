@@ -36,6 +36,7 @@ public class Graph {
         addEdge(adjacencyList, 7, 8);
         return(adjacencyList);
     }
+
     public static void main(String[] args) {
         int vertexCount = 9;
         ArrayList<ArrayList<Integer>> adjacencyList = new ArrayList<ArrayList<Integer>> (vertexCount);

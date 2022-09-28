@@ -14,7 +14,6 @@ public class Homework3 {
         } while (nodeChoice < 1 || nodeChoice > 8);
         System.out.println("\n" + nodeChoice + " selected");
         return nodeChoice;
-
     }
 
     public static void main(String[] args) {
@@ -41,7 +40,5 @@ public class Homework3 {
                 dfs.runDFS();
             }
         } while(true);
-
-        // Create an adjacency list
     }
 }

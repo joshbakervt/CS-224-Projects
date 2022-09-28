@@ -13,6 +13,7 @@ public class BreadthFirstSearch {
         this.adjacencyList = adjacencyList;
         this.numVertices = numVertices;
     }
+
     public void runBFS() {
         System.out.println("\nRunning BFS on start node " + this.node + "...");
         // Set discovered[s] = true and discovered[v] = false for all other v
@@ -39,8 +40,6 @@ public class BreadthFirstSearch {
                     l.add(n);
                 }
             }
-
-
         }
     System.out.println();
     }
