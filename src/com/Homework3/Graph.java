@@ -1,58 +1,58 @@
 package com.Homework3;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Graph {
-    int vertex;
-    LinkedList<Integer> list[];
-
-    public Graph(int vertex) {
-        this.vertex = vertex;
-        list = new LinkedList[vertex];
-        for (int i = 0; i < vertex; i++) {
-            list[i] = new LinkedList<>();
-        }
+    static void addEdge(ArrayList<ArrayList<Integer>> adj, int u, int v) {
+        adj.get(u).add(v);
+        adj.get(v).add(u);
     }
 
-    public void addEdge(int source, int dest) {
-        list[source].addFirst(dest);
-        list[dest].addFirst(source);
-    }
-
-    public void printGraph(){
-        for (int i = 0; i <vertex ; i++) {
-            if(list[i].size()>0) {
-                System.out.print("Vertex " + i + " is connected to: ");
-                for (int j = 0; j < list[i].size(); j++) {
-                    System.out.print(list[i].get(j) + " ");
-                }
-                System.out.println();
+    static void printAdjacencyList(ArrayList<ArrayList<Integer>> adj) {
+        for (int i = 0; i < adj.size(); i++) {
+            System.out.print(i);
+            for (int j = 0; j < adj.get(i).size(); j++) {
+                System.out.print("->" + adj.get(i).get(j));
             }
+            System.out.println();
         }
+    }
+
+    public static ArrayList<ArrayList<Integer>> createGraph() {
+        int vertexCount = 9;
+        ArrayList<ArrayList<Integer>> adjacencyList = new ArrayList<ArrayList<Integer>> (vertexCount);
+        for(int i = 0; i < vertexCount; i++) {
+            adjacencyList.add(new ArrayList<Integer>());
+        }
+        addEdge(adjacencyList, 1, 2);
+        addEdge(adjacencyList, 1, 3);
+        addEdge(adjacencyList, 2, 3);
+        addEdge(adjacencyList, 2, 4);
+        addEdge(adjacencyList, 2, 5);
+        addEdge(adjacencyList, 3, 5);
+        addEdge(adjacencyList, 3, 7);
+        addEdge(adjacencyList, 3, 8);
+        addEdge(adjacencyList, 4, 5);
+        addEdge(adjacencyList, 5, 6);
+        addEdge(adjacencyList, 7, 8);
+        return(adjacencyList);
     }
     public static void main(String[] args) {
-        Graph graph = new Graph(9);
-        graph.addEdge(1,2);
-        graph.addEdge(1, 3);
-        graph.addEdge(2, 1);
-        graph.addEdge(2, 3);
-        graph.addEdge(2, 4);
-        graph.addEdge(2, 5);
-        graph.addEdge(3, 1);
-        graph.addEdge(3, 2);
-        graph.addEdge(3, 5);
-        graph.addEdge(3, 7);
-        graph.addEdge(3, 8);
-        graph.addEdge(4, 2);
-        graph.addEdge(4, 5);
-        graph.addEdge(5, 2);
-        graph.addEdge(5, 3);
-        graph.addEdge(5, 4);
-        graph.addEdge(5, 6);
-        graph.addEdge(6, 5);
-        graph.addEdge(7, 3);
-        graph.addEdge(7, 8);
-        graph.addEdge(8, 3);
-        graph.addEdge(8, 7);
-        graph.printGraph();
+        int vertexCount = 9;
+        ArrayList<ArrayList<Integer>> adjacencyList = new ArrayList<ArrayList<Integer>> (vertexCount);
+        for(int i = 0; i < vertexCount; i++) {
+            adjacencyList.add(new ArrayList<Integer>());
+        }
+        addEdge(adjacencyList, 1, 2);
+        addEdge(adjacencyList, 1, 3);
+        addEdge(adjacencyList, 2, 3);
+        addEdge(adjacencyList, 2, 4);
+        addEdge(adjacencyList, 2, 5);
+        addEdge(adjacencyList, 3, 5);
+        addEdge(adjacencyList, 3, 7);
+        addEdge(adjacencyList, 3, 8);
+        addEdge(adjacencyList, 4, 5);
+        addEdge(adjacencyList, 5, 6);
+        addEdge(adjacencyList, 7, 8);
+        printAdjacencyList(adjacencyList);
     }
 }
