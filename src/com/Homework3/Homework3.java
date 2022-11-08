@@ -1,6 +1,7 @@
 package com.Homework3;
 import java.util.ArrayList;
 import java.util.Scanner;
+import com.Homework3.*;
 
 public class Homework3 {
 
