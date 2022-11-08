@@ -1,20 +1,14 @@
 public class Homework9 {
 
-    public static void knapsack(int[] items, int[] values, int[] weights, int w) {
+    public static void knapsack(int[][] m, int[] values, int[] weights, int w) {
         // Global array: M[0...n][0..W]
         int n = weights.length;
-        int[][] m = new int[n][w];
 
-        // Initialize all values in m to 0
-        for(int i = 0; i < w; i++) {
-            m[0][i] = 0;
-        }
-
-        System.out.print("Array: ");
-        for(int i = 0; i < w; i++) {
-            System.out.print(m[0][i] + ", ");
-        }
-        System.out.println();
+//        System.out.print("Array: ");
+//        for(int i = 0; i < w; i++) {
+//            System.out.print(m[0][i] + ", ");
+//        }
+//        System.out.println();
 
         // For all columns in array,
 //        for(int i = 1; i < n; i++) {
@@ -33,7 +27,7 @@ public class Homework9 {
 //            }
 //        }
 //        System.out.println("Iterating from i = 1 to n=" + n);
-        for(int i = 0; i < n; i++) {
+        for(int i = 1; i < n; i++) {
 //            System.out.println("Iterating from w = 0 to " + w);
             for(int w0 = 0; w0 < w; w0++) {
 //                System.out.println(i + ", " + w0);
@@ -46,7 +40,7 @@ public class Homework9 {
                         m[i][w0] = m[i - 1][w0];
                     }
                     else {
-                        m[i][w0] = m[0][w0];
+                        m[i][w0] = m[i][w0];
                     }
 //                    else {
 //                        m[i][w0] = m[i - 1][w0];
@@ -64,15 +58,7 @@ public class Homework9 {
                 }
 //                System.out.println("\n");
             }
-            System.out.println("------------ PRINTING ARRAY ------------");
-            for(int k = 0; k < (m[i].length); k++) {
-                System.out.print(k + ", ");
-            }
-            System.out.println(m[i].length);
-            for(int k = 0; k < (m[i].length-1); k++) {
-                System.out.print(m[i][k] + ", ");
-            }
-            System.out.println(m[i][m.length-1]);
+            printArray(i, m);
         }
 //        System.out.println("1 to " + n);
 //        for(int i = 1; i < n; i++) {
@@ -135,19 +121,45 @@ public class Homework9 {
         // Of the included items
 
     }
+    public static void printArray(int i, int[][] m) {
+//        String val;
+//        int curr;
+//        System.out.println("--------- Printing Array ---------");
+        for(int k = 0; k < (m[i].length); k++) {
+//            curr = m[i][k];
+//            val = String.format("3d", )
+            System.out.format("%4d", m[i][k]);
+        }
+//        System.out.format("%4d", m[i][m[i].length-1]);
+        System.out.println();
+    }
     public static void main(String[] args) {
-        // Program should output the items included in the optimal
-        // set and the resulting maximum total value of the items
-        // included
         int[] items = new int[]{1, 2, 3, 4, 5};
         int[] values = new int[]{1, 6, 18, 22, 28};
         int[] weights = new int[]{1, 2, 5, 6, 7};
+        int n = weights.length;
+        int[][] m = new int[n][weights.length];
+
+        // Initialize all values in m to 0
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < weights.length; j++) {
+                m[i][j] = 0;
+            }
+//            m[0][i] = 0;
+        }
+        // Printing our array to begin
+        System.out.println("initial array print");
+        printArray(0, m);
+        // Program should output the items included in the optimal
+        // set and the resulting maximum total value of the items
+        // included
+
 
         System.out.println("Running knapsack algorithm with W = 10");
-        knapsack(items, values, weights, 10);
+        knapsack(m, values, weights, 10);
 
         System.out.println("Running knapsack algorithm with W = 11");
-        knapsack(items, values, weights, 11);
+        knapsack(m, values, weights, 11);
 
     }
 }
